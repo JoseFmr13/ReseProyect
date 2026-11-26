@@ -1,0 +1,92 @@
+.app-shell {
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 260px 1fr;
+  font-family: 'Inter', system-ui, sans-serif;
+  background: #f4f7fb;
+}
+
+/* Barra lateral */
+.sidebar {
+  position: sticky; top: 0;
+  height: 100vh;
+  display: flex; flex-direction: column;
+  padding: 20px 14px;
+  color: #cfe0f0;
+  background: linear-gradient(180deg, #062a4a, #0b3d66);
+}
+.sidebar-marca {
+  display: flex; align-items: center; gap: 12px;
+  padding: 6px 10px 24px;
+  color: #fff; font-weight: 700; font-size: 16px; line-height: 1.2;
+}
+.sidebar-marca small { font-weight: 400; font-size: 12px; opacity: 0.75; }
+.marca-icono {
+  width: 40px; height: 40px;
+  display: grid; place-items: center;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.14);
+}
+.sidebar-nav { display: grid; gap: 4px; }
+.nav-item {
+  display: flex; align-items: center; gap: 12px;
+  padding: 11px 12px;
+  border-radius: 10px;
+  font-size: 14px; font-weight: 500;
+  color: #cfe0f0;
+  transition: background 0.15s, color 0.15s;
+}
+.nav-item:hover { background: rgba(255, 255, 255, 0.08); color: #fff; }
+.nav-item.activo { background: rgba(255, 255, 255, 0.16); color: #fff; }
+
+.sidebar-pie { margin-top: auto; padding-top: 16px; border-top: 1px solid rgba(255, 255, 255, 0.12); }
+.usuario-caja { display: flex; align-items: center; gap: 10px; padding: 4px 6px 14px; }
+.avatar {
+  width: 38px; height: 38px;
+  display: grid; place-items: center;
+  font-weight: 700; color: #fff;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #0b66b2, #12a4b8);
+}
+.usuario-nombre { color: #fff; font-size: 14px; font-weight: 600; }
+.usuario-rol { font-size: 12px; opacity: 0.75; }
+.app-shell .btn-salir {
+  width: 100%;
+  display: flex; align-items: center; justify-content: center; gap: 8px;
+  padding: 10px;
+  font-size: 14px;
+  color: #cfe0f0;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 10px;
+}
+.app-shell .btn-salir:hover { background: rgba(255, 255, 255, 0.16); color: #fff; }
+
+/* Contenido */
+.app-contenido { min-width: 0; }
+.app-main { width: 100%; max-width: 1180px; margin: 0 auto; padding: 32px 32px 48px; }
+.topbar-movil, .app-overlay { display: none; }
+
+/* Estilos base para las demás pantallas dentro del layout */
+.app-main h2 { margin: 0 0 18px; font-size: 24px; color: #0f2133; }
+
+@media (max-width: 900px) {
+  .app-shell { grid-template-columns: 1fr; }
+  .sidebar {
+    position: fixed; z-index: 50;
+    width: 270px;
+    transform: translateX(-100%);
+    transition: transform 0.25s;
+  }
+  .sidebar.abierto { transform: none; }
+  .app-overlay.visible { display: block; position: fixed; inset: 0; z-index: 40; background: rgba(6, 42, 74, 0.5); }
+  .topbar-movil {
+    position: sticky; top: 0; z-index: 30;
+    display: flex; align-items: center; gap: 12px;
+    padding: 10px 16px;
+    color: #0b3d66;
+    background: #fff;
+    border-bottom: 1px solid #e3eaf2;
+  }
+  .app-shell .btn-menu { padding: 6px; display: grid; place-items: center; color: #0b3d66; background: #eaf2fa; }
+  .app-main { padding: 20px 16px 40px; }
+}
